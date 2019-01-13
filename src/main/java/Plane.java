@@ -4,9 +4,12 @@ public class Plane {
 
     private PlaneType type;
     private ArrayList<Passenger> passengers;
+    private AirlineType airline;
 
-    public Plane(PlaneType type) {
+
+    public Plane(PlaneType type, AirlineType airline) {
         this.type = type;
+        this.airline = airline;
         this.passengers = new ArrayList<>();
     }
 
@@ -15,8 +18,11 @@ public class Plane {
     }
 
     public ArrayList<Passenger> getPassengers() {
-        ArrayList<Passenger> passengersClone = (ArrayList<Passenger>) passengers.clone();
-        return passengersClone;
+       return passengers;
+    }
+
+    public AirlineType getAirline() {
+        return airline;
     }
 
     public String getTypeName(){

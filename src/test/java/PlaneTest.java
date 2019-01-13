@@ -10,8 +10,8 @@ public class PlaneTest {
 
     @Before
     public void setUp(){
-        plane = new Plane(PlaneType.BOEING747);
-        smallPlane = new Plane(PlaneType.VERYSMALLPLANE);
+        plane = new Plane(PlaneType.BOEING747, AirlineType.BRITISHAIRWAYS);
+        smallPlane = new Plane(PlaneType.VERYSMALLPLANE, AirlineType.KLM);
         passenger = new Passenger("John Everyman");
     }
 
@@ -72,5 +72,10 @@ public class PlaneTest {
         plane.emptyPlane();
         assertEquals(0, plane.getPassengers().size());
         assertEquals(50, plane.remainingSeats());
+    }
+
+    @Test
+    public void getAirline() {
+        assertEquals(AirlineType.KLM, smallPlane.getAirline());
     }
 }

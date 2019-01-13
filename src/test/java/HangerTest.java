@@ -11,17 +11,11 @@ public class HangerTest {
 
     @Before
     public void setUp() {
-        hanger = new Hanger(1, 5);
-        plane = new Plane(PlaneType.BOEING737);
-        largePlane = new Plane(PlaneType.SUPERPLANEMANYSEATS);
-        smallPlane = new Plane(PlaneType.VERYSMALLPLANE);
-        mediumPlane = new Plane(PlaneType.BOEING747);
-    }
-
-
-    @Test
-    public void getHangerNumber() {
-        assertEquals(1, hanger.getHangerNumber());
+        hanger = new Hanger( 5);
+        plane = new Plane(PlaneType.BOEING737, AirlineType.BRITISHAIRWAYS);
+        largePlane = new Plane(PlaneType.SUPERPLANEMANYSEATS, AirlineType.BRITISHAIRWAYS);
+        smallPlane = new Plane(PlaneType.VERYSMALLPLANE, AirlineType.BRITISHAIRWAYS);
+        mediumPlane = new Plane(PlaneType.BOEING747, AirlineType.BRITISHAIRWAYS);
     }
 
     @Test
@@ -60,17 +54,12 @@ public class HangerTest {
     }
 
     @Test
-    public void addPlanesInOrder() {
-        assertEquals(0, hanger.getPlanes().size());
-        assertEquals(5, hanger.spacesAvailable());
+    public void removePlane() {
         hanger.addPlane(mediumPlane);
         hanger.addPlane(largePlane);
         hanger.addPlane(smallPlane);
         hanger.addPlane(mediumPlane);
-        assertEquals(4, hanger.getPlanes().size());
-        assertEquals(1, hanger.spacesAvailable());
-        assertEquals(smallPlane, hanger.getPlanes().get(0));
-        assertEquals(mediumPlane, hanger.getPlanes().get(1));
-        assertEquals(largePlane, hanger.getPlanes().get(3));
+        assertEquals(largePlane, hanger.removePlane(1));
+        assertEquals(mediumPlane, hanger.removePlane(2));
     }
 }
